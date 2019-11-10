@@ -1,13 +1,11 @@
-var MongoClient = require('mongodb').MongoClient;
+let mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/live_price');
 
-MongoClient.connect('mongodb://localhost:27017/animals', function (err, client) {
-    if (err) throw err;
+let db = mongoose.connection;
 
-    var db = client.db('animals');
+db.on('error', console.error.bind(console, 'connection error:'));
 
-    db.collection('mammals').find().toArray(function (err, result) {
-        if (err) throw err;
-
-        console.log(result)
-    });
+db.once('open', function () {
+    console.log("Connection Successful!");
 });
+module.exports = db;

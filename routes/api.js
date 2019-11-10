@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
+let db = require('../config/database');
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
+var coins = db.collection('coins');
+
+
+/* GET api listing. */
+router.get('/coins', function (req, res, next) {
     res.json({
+        coins: coins.toString(),
         status: 'API Its Working',
-        message: 'Welcome to RESTHub crafted with love!'
+        message: 'Welcome to Laraman',
     });
 });
 
