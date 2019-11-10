@@ -5,12 +5,12 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     var MongoClient = require('mongodb').MongoClient;
 
-    MongoClient.connect('mongodb://localhost:27017/cln', function (err, client) {
+    MongoClient.connect('mongodb://localhost:27017/live_price', function (err, client) {
         if (err) throw err;
 
-        var db = client.db('cln');
+        var db = client.db('live_price');
 
-        db.collection('mammals').find().toArray(function (err, result) {
+        db.collection('coins').find().toArray(function (err, result) {
             if (err) throw err;
 
             console.log(result)
