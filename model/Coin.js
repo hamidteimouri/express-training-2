@@ -8,7 +8,7 @@ coinSchema.statics = {
         coin.save(cb);
     },
 
-    get: function (query, cb) {
+    getAll: function (query, cb) {
         this.find(query)
     },
 
