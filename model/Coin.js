@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var coinSchema = require('../migration/coins.js');
+var CoinModel = mongoose.model('Coin', coinSchema);
 
 coinSchema.statics = {
     // cb : callback
@@ -25,6 +26,6 @@ coinSchema.statics = {
     }
 };
 
-var CoinModel = mongoose.model('Coin', coinSchema);
+
 module.exports = CoinModel;
 
