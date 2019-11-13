@@ -2,13 +2,9 @@ var express = require('express');
 var router = express.Router();
 var CoinController = require('../../controller/CoinController');
 
-router.get('/', CoinController.getCoins);
-
-/*
-module.exports = function (router) {
-    router.get('coins', CoinController.getCoins());
-};
-*/
+// get all coins
+router.get('/', CoinController.index);
+router.post('/create', CoinController.store());
 
 module.exports = router;
 
