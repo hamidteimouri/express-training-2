@@ -19,7 +19,7 @@ exports.store = function (req, res, next) {
     coin.save();
 
 
-    res.send('Object saved successfully2 : ' + coin.asset);
+    res.send('Coin created successfully: ' + coin.asset);
 
 };
 
