@@ -4,7 +4,7 @@ var CoinController = require('../../controller/CoinController');
 
 // get all coins
 router.get('/', CoinController.index);
-router.get('/create', CoinController.index);
+router.post('/create', CoinController.store);
 
 module.exports = router;
 
