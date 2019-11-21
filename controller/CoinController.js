@@ -2,24 +2,16 @@ var CoinModel = require('../model/Coin');
 
 
 exports.store = function (req, res, next) {
+    /* this is for GET request */
+    //var coin = new CoinModel({asset: req.query.asset, name_fa: req.query.name_fa});
+    //coin.save();
 
-    /*
-    var coin = new CoinModel({asset: req.asset,name_fa: req.name_fa,
-        }, function (err, result) {
-            if (err) {
-                res.send('err :' + err)
-            }
-            // object saved here
-            res.send('Object saved successfully');
-        }
-    );
-    */
-    console.log(req);
-    var coin = new CoinModel({asset: req.query.asset, name_fa: req.query.name_fa});
+    /* this is for POST request */
+    var coin = new CoinModel({asset: req.body.asset, name_fa: req.body.name_fa});
     coin.save();
 
-
-    res.send('Coin created successfully: ' + coin.asset);
+    /*res.send('Coin created successfully: ' + coin.asset);*/
+    res.redirect('/api/coins')
 
 };
 
@@ -29,6 +21,21 @@ exports.index = function (req, res, next) {
         res.render('coin/index', {
             'coins': result
         });
+    });
+};
+exports.create = function (req, res, next) {
+    res.render('coin/create');
+};
+
+
+exports.edit = function (req, res, next) {
+    var coin = CoinModel.findOne({asset: req.params.asset});
+    coin.exec(function (err, result) {
+        res.send(result.name_fa);
+    });
+
+    res.render('coin/edit', {
+        coin: coin
     });
 };
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partial/head.ejs %>
+<body>
+<% include ../partial/navbar.ejs %>
+
+<br>
+<br>
+<form style="padding: 15px;" action="/api/coins/create" method="post">
+    <input placeholder="Asset (example: BTC)" style="padding: 10px;border: 1px solid #eee" name="asset" value="">
+    <input placeholder="Persian Name (VERGE)" style="padding: 10px;border: 1px solid #eee" name="name_fa" value="">
+    <button type="submit" style="padding: 10px;border: 1px solid #eee">Save</button>
+</form>
+</body>
+</html>

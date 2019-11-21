@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partial/head.ejs %>
+<body>
+<% include ../partial/navbar.ejs %>
+
+<br>
+<br>
+<br>
+<div style="padding: 15px">
+    <div style="padding: 15px 10px;background: rgba(255,229,133,0.66)">
+        Edit this asset
+    </div>
+</div>
+<br>
+<form style="padding: 15px;" action="/api/coins/<%= coin.asset %>/edit" method="post">
+    <input placeholder="Asset (example: BTC)" style="padding: 10px;border: 1px solid #eee" name="asset"
+           value="<%= coin.asset %>">
+    <input placeholder="Persian Name (VERGE)" style="padding: 10px;border: 1px solid #eee" name="name_fa"
+           value="<%= coin.name_fa %>">
+    <button type="submit" style="padding: 10px;border: 1px solid #eee">Update</button>
+</form>
+</body>
+</html>
