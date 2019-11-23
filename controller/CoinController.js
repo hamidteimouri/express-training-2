@@ -31,12 +31,23 @@ exports.create = function (req, res, next) {
 exports.edit = function (req, res, next) {
     var coin = CoinModel.findOne({asset: req.params.asset});
     coin.exec(function (err, result) {
-        res.send(result.name_fa);
+        res.render('coin/edit', {
+            coin: result
+        });
     });
+};
 
-    res.render('coin/edit', {
-        coin: coin
+exports.update = function (req, res, next) {
+    // var coin = CoinModel.findOneAndUpdate({asset: req.params.asset});
+    var coin = CoinModel.findOneAndUpdate({asset: req.params.asset}, function (err, result) {
+        res.send(result);
     });
+    // coin.exec(function (err, result) {
+    //     res.render('coin/edit', {
+    //         coin: result
+    //     });
+    // });
+    //console.log(coin);
 };
 
 function handleError(err) {
